@@ -13,12 +13,10 @@
 </template>
 
 <script>
-import ceList from './ce-list.vue'
-import aheader from './header.vue'
+
 export default {
   components: {
-    'a-lista': ceList,
-    'a-header': aheader
+
   }
 }
 </script>
