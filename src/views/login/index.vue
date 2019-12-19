@@ -43,7 +43,7 @@ export default {
             message: '请输入正确得验证码'
           }],
         cbox: [{
-          validator: function (rule, value, callback) {
+          validator: function (rule, value, callback) { // validator是element ui 得一个自定义函数  名字必须是这样
             if (value) {
               callback()
             } else {
@@ -56,10 +56,9 @@ export default {
   },
   methods: {
     login_t () {
-      this.$refs.myForm.validate(function (isOK) {
-        if (isOK) {
+      this.$refs.myForm.validate(function (isOK) { // validate是一个方法 用来全局检测
+        if (isOK) { // 因为检测之后 你并不知道结果需要用返回的参数来判断
           //  认为前端校验登录表单成功
-          console.log('前端校验成功,发送用户名和密码到后台去校验')
         }
       })
     }
@@ -67,7 +66,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>//lang="less"  是为了让css可以使用less格式 而scoped是一个属性他得作用是让该页样式只对该页有效果
 .loginBgi {
   height: 100vh;
   background-image: url("../../assets/img/login_bg.jpg");
