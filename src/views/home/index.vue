@@ -4,7 +4,9 @@
      <a-lista ></a-lista>
    </el-aside>
    <el-container>
-     <el-header>顶部</el-header>
+     <el-header>
+       <a-header></a-header>
+     </el-header>
      <el-main>内容</el-main>
    </el-container>
  </el-container>
@@ -12,9 +14,11 @@
 
 <script>
 import ceList from './ce-list.vue'
+import aheader from './header.vue'
 export default {
   components: {
-    'a-lista': ceList
+    'a-lista': ceList,
+    'a-header': aheader
   }
 }
 </script>
