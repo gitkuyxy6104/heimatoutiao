@@ -1,6 +1,8 @@
 <template>
  <el-container>
-   <el-aside>侧边</el-aside>
+   <el-aside style="background-color:#353b4e;min-height:100vh;width:230px">
+     <a-lista ></a-lista>
+   </el-aside>
    <el-container>
      <el-header>顶部</el-header>
      <el-main>内容</el-main>
@@ -9,11 +11,16 @@
 </template>
 
 <script>
+import ceList from './ce-list.vue'
 export default {
-
+  components: {
+    'a-lista': ceList
+  }
 }
 </script>
 
-<style>
-
+<style lang='less' scoped>
+.el-aside{
+  overflow: hidden;
+}
 </style>
