@@ -7,7 +7,9 @@
      <el-header>
        <a-header></a-header>
      </el-header>
-     <el-main>内容</el-main>
+     <el-main>
+       <router-view></router-view>
+       </el-main>
    </el-container>
  </el-container>
 </template>
