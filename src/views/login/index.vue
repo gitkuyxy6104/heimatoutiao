@@ -6,7 +6,7 @@
       </div>
       <el-form style="margin-top:30px" :rules="logfn" :model="logForm" ref="myForm">
         <el-form-item prop="phone">
-          <el-input placeholder="请输入您得手机号" v-model="logForm.phone"></el-input>
+          <el-input placeholder="请输入您得手机号" v-model="logForm.mobile"></el-input>
         </el-form-item>
         <el-form-item prop="code">
           <el-input style="width:65%" placeholder="请输入您得验证码" v-model="logForm.code"></el-input>
@@ -28,12 +28,12 @@ export default {
   data () {
     return {
       logForm: {
-        phone: '',
+        mobile: '',
         code: '',
         cbox: false
       },
       logfn: {
-        phone: [
+        mobile: [
           { required: true, message: '请输入您的手机号' },
           { pattern: /^1[3456789]\d{9}$/, message: '请输入正确得手机号' }
         ],
@@ -56,9 +56,23 @@ export default {
   },
   methods: {
     login_t () {
-      this.$refs.myForm.validate(function (isOK) { // validate是一个方法 用来全局检测
+      this.$refs.myForm.validate((isOK) => { // validate是一个方法 用来全局检测
         if (isOK) { // 因为检测之后 你并不知道结果需要用返回的参数来判断
-          //  认为前端校验登录表单成功
+          this.$axios({
+            url: '/authorizations', // 请求地址
+            method: 'post',
+            data: this.logForm
+          }).then(result => {
+            window.localStorage.setItem('user-token', result.data.data.token) // 前端缓存令牌
+            this.$router.push('/home') // 跳转到主页
+            //  成功以后才会进入到then
+          }).catch(() => {
+            // elementUI的方法
+            this.$message({
+              message: '您的手机号或者验证码不正确',
+              type: 'warning'
+            })
+          })
         }
       })
     }
