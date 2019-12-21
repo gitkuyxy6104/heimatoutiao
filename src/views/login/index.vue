@@ -5,7 +5,7 @@
         <img src="../../assets/img/logo_index.png" alt />
       </div>
       <el-form style="margin-top:30px" :rules="logfn" :model="logForm" ref="myForm">
-        <el-form-item prop="phone">
+        <el-form-item prop="mobile">
           <el-input placeholder="请输入您得手机号" v-model="logForm.mobile"></el-input>
         </el-form-item>
         <el-form-item prop="code">
