@@ -4,10 +4,9 @@ import router from './quanxian'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import './styles/index.less'
-import axios from 'axios'
+import axios from './gongju/request'
 import Component from './components'
 Vue.prototype.$axios = axios
-axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0'
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
