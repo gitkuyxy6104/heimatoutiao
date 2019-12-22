@@ -61,13 +61,7 @@ export default {
         // 地址参数/query参数/url参数/路由参数 => 可以在params中写 也可以直接拼接到url地址上
         this.$axios({
           method: 'put',
-          url: '/comments/status',
-          params: {
-            article_id: row.id.toString()
-          },
-          data: {
-            allow_comment: !row.comment_status
-          }
+          url: '/comments/status'
         }).then(result => {
           // 打开或者关闭评论成功之后
           this.$message({

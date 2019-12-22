@@ -4,6 +4,7 @@ import Home from '../views/home'
 import Login from '../views/login'
 import Home2 from '../views/home/home'
 import Commont from '../views/comment'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -21,6 +22,9 @@ const routes = [
     }, {
       path: 'comment',
       component: Commont
+    }, {
+      path: 'material',
+      component: () => import('../views/material')
     }]
   },
   {
