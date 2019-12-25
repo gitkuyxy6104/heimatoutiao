@@ -27,7 +27,7 @@ const routes = [
       component: () => import('../views/material')
     }, {
       path: 'articles',
-      component: () => import('../views/fabu')
+      component: () => import('../views/articles')
     }]
   },
   {
