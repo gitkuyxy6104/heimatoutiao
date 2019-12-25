@@ -30,7 +30,10 @@ const routes = [
       component: () => import('../views/articles')
     }, {
       path: 'publish',
-      component: () => import('../views/publish') // 按需加载
+      component: () => import('../views/publish')
+    }, {
+      path: 'publish/:articleId',
+      component: () => import('../views/publish')
     }]
   },
   {
