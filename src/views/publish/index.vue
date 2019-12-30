@@ -11,7 +11,7 @@
         <el-form-item  prop="content" label="内容">
           <quill-editor style="height:400px;" v-model="formData.content"  ></quill-editor>
         </el-form-item>
-        <el-form-item label="封面" style="margin-top:100px">
+        <el-form-item label="封面" style="margin-top:140px">
           <!-- 单选组  v-model="封面类型" -->
           <el-radio-group v-model="formData.cover.type">
             <el-radio :label="1">单图</el-radio>
@@ -20,6 +20,8 @@
             <el-radio :label="-1">自动</el-radio>
           </el-radio-group>
         </el-form-item>
+        <!-- 放置一个封面组件  父组件  => 子组件 props -->
+        <cover-image :list="formData.cover.images"></cover-image>
         <el-form-item prop="channel_id" label="频道">
           <el-select v-model="formData.channel_id">
             <el-option v-for="item in channels" :key="item.id" :value="item.id" :label="item.name"></el-option>
@@ -61,12 +63,13 @@ export default {
   },
   watch: {
     $route: function (to, from) {
+      console.log(this.a)
       if (Object.keys(to.params).length) {
         //  有参数  => 修改
       } else {
         // 没有参数  => 发布 // 没有参数  => 发布
         this.formData = {
-          title: '', // 标题
+          title: '', // 标题 3
           content: '', // 文章内容
           cover: {
             type: 0, //   封面类型 -1:自动，0-无图，1-1张，3-3张
@@ -76,7 +79,15 @@ export default {
       }
     },
     'formData.cover.type': function () {
-      debugger
+      //  this指向组件实例
+      if (this.formData.cover.type === 0 || this.formData.cover.type === -1) {
+        // 无图或者自动模式
+        this.formData.cover.images = []
+      } else if (this.formData.cover.type === 1) {
+        this.formData.cover.images = [''] // 单图模式
+      } else if (this.formData.cover.type === 3) {
+        this.formData.cover.images = ['', '', ''] // 单图模式
+      }
     }
   },
   methods: {
